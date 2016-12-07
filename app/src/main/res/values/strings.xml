@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">EspressoDemo</string>
+
+    <string name="category">Category</string>
+    <string name="none_value">None</string>
+    <string name="vehicle_details">Vehicle details</string>
+    <string name="make">Make</string>
+    <string name="asking_price">Asking price</string>
+    <string name="on_road_costs">Includes on road costs</string>
+    <string name="show_number_plate">Show number plate</string>
+    <string name="current_wof_registration">Current WoF &amp; registration</string>
+    <string name="current_wof_registration_diesel">Current WoF, registration &amp; 1,000km road user charges</string>
+    <string name="required">Required</string>
+    <string name="dont_know_option">Don\'t know</string>
+    <string name="photo_count_caption">%d out of 20 photos added</string>
+    <string name="required_suffix">(required)</string>
+
+    <string name="asking_price_display">"Asking price %s"</string>
+    <string name="start_my_classified">"Start my classified"</string>
+
+    <string name="asking_price_empty_error">Asking price cannot be empty</string>
+    <string name="asking_price_less_than_error">Asking price must be at least 50c.</string>
+    <string name="asking_price_greater_than_error">Asking price cannot be greater than $99,999,999.99</string>
+    <string name="field_empty_error">\"%s\" cannot be empty</string>
+    <string name="greater_than_error">\"%1$s\" cannot be greater than %2$s</string>
+    <string name="less_than_error">\"%1$s\" cannot be less than %2$s</string>
+    <string name="back_capitalised">BACK</string>
+    <string name="next_capitalised">NEXT</string>
+
+</resources>
