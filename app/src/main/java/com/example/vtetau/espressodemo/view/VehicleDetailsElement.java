@@ -13,6 +13,8 @@ public interface VehicleDetailsElement extends MVPView {
 
     void scrollToViewPosition(int position);
 
-    void finish();
+    void showInputValid();
+
+    void reset();
 
 }

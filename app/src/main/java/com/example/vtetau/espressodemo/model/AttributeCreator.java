@@ -22,9 +22,10 @@ public class AttributeCreator {
         modelAttribute.setOptions(attributeOptions);
         attributes.add(modelAttribute);
 
-        attributes.add(createAttribute("4WD", "4wd",  true, Attribute.TYPE_BOOLEAN, null, null));
+        attributes.add(createAttribute("4WD", "4wd",  false, Attribute.TYPE_BOOLEAN, null, null));
         attributes.add(createAttribute("Kilometres", "Kilometres",  true, Attribute.TYPE_DECIMAL, "0", "500000"));
         attributes.add(createAttribute("Engine size", "EngineSize",  true, Attribute.TYPE_DECIMAL, "0", "20000"));
+        attributes.add(createAttribute("Number plate", "NumberPlate",  false, Attribute.TYPE_STRING, null, null));
         return attributes;
     }
 

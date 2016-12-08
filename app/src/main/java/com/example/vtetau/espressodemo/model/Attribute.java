@@ -3,6 +3,8 @@ package com.example.vtetau.espressodemo.model;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.example.vtetau.espressodemo.common.Util.StringUtil;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -182,9 +184,7 @@ public class Attribute {
     }
 
     public boolean hasRange(){
-        //todo
-//        return !StringUtil.emptyString(this.lowerRange) && !StringUtil.emptyString(this.upperRange);
-        return false;
+        return !StringUtil.emptyString(this.lowerRange) && !StringUtil.emptyString(this.upperRange);
     }
 
 }

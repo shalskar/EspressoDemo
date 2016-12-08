@@ -1,14 +1,13 @@
 package com.example.vtetau.espressodemo;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.vtetau.espressodemo.common.dagger.activity.DaggerActivity;
 import com.example.vtetau.espressodemo.component.CustomRecyclerAdapter;
@@ -16,7 +15,6 @@ import com.example.vtetau.espressodemo.component.FieldViewHolder;
 import com.example.vtetau.espressodemo.component.SwitchViewHolder;
 import com.example.vtetau.espressodemo.component.VehicleDetailsAdapter;
 import com.example.vtetau.espressodemo.dagger.components.ApplicationComponent;
-import com.example.vtetau.espressodemo.dagger.modules.AppModule;
 import com.example.vtetau.espressodemo.dagger.util.DaggerInjectionUtil;
 import com.example.vtetau.espressodemo.fragment.AttributeOptionDialogFragment;
 import com.example.vtetau.espressodemo.model.Attribute;
@@ -31,7 +29,6 @@ import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
 
-import static android.os.Build.VERSION_CODES.N;
 
 public class MainActivity extends DaggerActivity<ApplicationComponent> implements VehicleDetailsElement, VehicleDetailsAdapter.AdapterListener, CustomRecyclerAdapter.OnItemClickListener<FieldViewHolder>,
         AttributeOptionDialogFragment.AttributeOptionDialogListener {
@@ -112,6 +109,11 @@ public class MainActivity extends DaggerActivity<ApplicationComponent> implement
     }
 
     @Override
+    public void showInputValid() {
+        Snackbar.make(this.recyclerView, "Input valid!", Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
     public void scrollToViewPosition(int position) {
         this.recyclerView.smoothScrollToPosition(position);
     }
@@ -147,6 +149,36 @@ public class MainActivity extends DaggerActivity<ApplicationComponent> implement
     @Override
     public void onViewFocusChanged(@NonNull FieldViewHolder viewHolder, boolean focused) {
         this.presenter.onViewFocusChanged(viewHolder.getAdapterPosition(), focused);
+    }
+
+    @Override
+    public void reset() {
+        this.adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                return super.onOptionsItemSelected(item);
+            case R.id.menu_save:
+                this.presenter.onSaveClicked();
+                break;
+            case R.id.menu_reset:
+                this.presenter.onResetClicked();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
+        boolean result = super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_vehicle_details, menu);
+        return result;
     }
 
     @Nullable

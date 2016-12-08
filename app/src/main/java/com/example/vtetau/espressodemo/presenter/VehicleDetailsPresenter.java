@@ -71,10 +71,18 @@ public class VehicleDetailsPresenter extends MVPPresenter<VehicleDetailsElement>
             for (Attribute attribute : this.attributes) {
                 attribute.setValue(this.attributeValues.get(attribute.getName()));
             }
-            getView().finish();
+            getView().showInputValid();
         } else { // Validation unsuccessful, scroll to invalid view
             getView().scrollToViewPosition(validation.second);
         }
+    }
+
+    public void onResetClicked() {
+        this.attributeValues.clear();
+        for (Attribute attribute : this.attributes) {
+            attribute.setValue(null);
+        }
+        getView().reset();
     }
 
     public void onValueChanged(int position, @NonNull String value) {
@@ -86,7 +94,7 @@ public class VehicleDetailsPresenter extends MVPPresenter<VehicleDetailsElement>
     }
 
     public void onViewFocusChanged(int position, boolean focused) {
-        if (!focused) {
+        if (!focused && position != -1) {
             Attribute attribute = this.attributes.get(position);
             ValidationState validationState = validateField(attribute, this.attributeValues.get(attribute.getName()));
             this.attributeValidationStates.put(attribute.getName(), validationState);

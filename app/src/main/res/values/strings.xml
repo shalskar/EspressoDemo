@@ -27,4 +27,7 @@
     <string name="back_capitalised">BACK</string>
     <string name="next_capitalised">NEXT</string>
 
+    <string name="button_save">Save</string>
+    <string name="button_reset">Reset</string>
+
 </resources>
